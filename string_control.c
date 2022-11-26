@@ -4,13 +4,13 @@
  * print_char - prints out a character
  * @list: list of all provided arguments
  *
- * Return: 0 when successful
+ * Return: 1 when successful
  */
 
 int print_char(va_list list)
 {
 	_putchar(va_arg(list, int));
-	return (0);
+	return (1);
 }
 
 /**
@@ -39,11 +39,11 @@ int print_string(va_list list)
  * print_percent - prints out % symbol
  * @list: list of all provided arguments
  *
- * Return: 0 when successful
+ * Return: 1 when successful
  */
 
 int print_percent(__attribute__((unused))va_list list)
 {
 	_putchar('%');
-	return (0);
+	return (1);
 }
