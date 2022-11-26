@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
  * _printf - Receives the main string and all the necessary parameters to
@@ -8,20 +8,11 @@
  */
 int _printf(const char *format, ...)
 {
-	int printed_chars;
+	int printed_chars = 0, i, j, r_val;
 	conver_t f_list[] = {
 		{"c", print_char},
 		{"s", print_string},
 		{"%", print_percent},
-		{"d", print_integer},
-		{"i", print_integer},
-		{"b", print_binary},
-		{"r", print_reversed},
-		{"R", rot13},
-		{"u", unsigned_integer},
-		{"o", print_octal},
-		{"x", print_hex},
-		{"X", print_heX},
 		{NULL, NULL}
 	};
 	va_list arg_list;
@@ -30,8 +21,47 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(arg_list, format);
-	/*Calling parser function*/
-	printed_chars = parser(format, f_list, arg_list);
+	/*
+	 * Calling paeser function
+	 * printed_chars = parser(format, f_list, arg_list);
+	*/
+	
+	for (i = 0; format[i] != '\0'; i++)/* Iterates through the main str*/
+	{
+		if (format[i] == '%') /*Checks for format specifiers*/
+		{
+			/*Iterates through struct to find the right func*/
+			for (j = 0; f_list[j].sym != NULL; j++)
+			{
+				if (format[i + 1] == f_list[j].sym[0])
+				{
+					r_val = f_list[j].f(arg_list);
+					if (r_val == -1)
+						return (-1);
+					printed_chars += r_val;
+					break;
+				}
+			}
+			if (f_list[j].sym == NULL && format[i + 1] != ' ')
+			{
+				if (format[i + 1] != '\0')
+				{
+					_putchar(format[i]);
+					_putchar(format[i + 1]);
+					printed_chars = printed_chars + 2;
+				}
+				else
+					return (-1);
+			}
+			i = i + 1; /*Updating i to skip format symbols*/
+		}
+		else
+		{
+			_putchar(format[i]); /*call the write function*/
+			printed_chars++;
+		}
+	}
+
 	va_end(arg_list);
 	return (printed_chars);
 }
