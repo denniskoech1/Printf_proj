@@ -6,6 +6,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+/**
+ * struct convert - structurefor the symbols for functions
+ * @sym: the operator
+ * @f: pointer itself
+ *
+ * Desc - Stores all pointers for the printing functions
+ */
+
 struct convert
 {
 	char *sym;
@@ -19,5 +27,6 @@ int parser(const char *format, conver_t f_list[], va_list arg_list);
 int print_string(va_list list);
 int print_char(va_list list);
 int print_percent(__attribute__((unused))va_list list);
+int parser(const char *format, conver_t f_list[], va_list arg_list);
 
 #endif
