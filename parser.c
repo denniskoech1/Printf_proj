@@ -2,11 +2,11 @@
 
 /**
 * parser - Accepts all parameters passed to the main function
-* @fomart - List of all characters passed in the main function
+* @format - List of all characters passed in the main function
 * @f_list: List of all possible functions
 * @arg_list: list containing all arguments passed in the function
 *
-* Return: Number of all printed 
+* Return: Number of all printed
 */
 
 int parser(const char *format, conver_t f_list[], va_list arg_list)
@@ -30,7 +30,7 @@ int parser(const char *format, conver_t f_list[], va_list arg_list)
 			}
 			if (f_list[j].sym == NULL && format[i + 1] != ' ')
 			{
-				if (format[i +1] != '\0')
+				if (format[i + 1] != '\0')
 				{
 					_putchar(format[i]);
 					_putchar(format[i + 1]);
