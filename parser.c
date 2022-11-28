@@ -2,7 +2,7 @@
 
 /**
 * parser - Accepts all parameters passed to the main function
-* @format - List of all characters passed in the main function
+* @format: List of all characters passed in the main function
 * @f_list: List of all possible functions
 * @arg_list: list containing all arguments passed in the function
 *
